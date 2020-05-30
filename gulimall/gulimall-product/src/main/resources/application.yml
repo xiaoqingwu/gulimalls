@@ -1,7 +1,7 @@
 spring:
   datasource:
     username: root
-    data-password: root
+    password: 123456
     url: jdbc:mysql://120.53.2.17:3306/gulimall_pms
     driver-class-name: com.mysql.jdbc.Driver
 mybatis-plus:

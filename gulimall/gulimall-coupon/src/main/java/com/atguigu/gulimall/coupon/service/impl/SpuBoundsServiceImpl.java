@@ -5,9 +5,7 @@ import java.util.Map;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.atguigu.gulimall.common.utils.PageUtils;
-import com.atguigu.gulimall.common.utils.Query;
-
+import com.atguigu.common.utils.*;
 import com.atguigu.gulimall.coupon.dao.SpuBoundsDao;
 import com.atguigu.gulimall.coupon.entity.SpuBoundsEntity;
 import com.atguigu.gulimall.coupon.service.SpuBoundsService;

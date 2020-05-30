@@ -3,8 +3,7 @@ package com.atguigu.gulimall.product.controller;
 import java.util.Arrays;
 import java.util.Map;
 
-import com.atguigu.common.utils.PageUtils;
-import com.atguigu.common.utils.R;
+//import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -14,6 +13,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.atguigu.gulimall.product.entity.CategoryBrandRelationEntity;
 import com.atguigu.gulimall.product.service.CategoryBrandRelationService;
+import com.atguigu.common.utils.PageUtils;
+import com.atguigu.common.utils.R;
 
 
 
@@ -22,7 +23,7 @@ import com.atguigu.gulimall.product.service.CategoryBrandRelationService;
  *
  * @author wuxiaoqing
  * @email 960876643@qq.com
- * @date 2020-05-23 21:42:12
+ * @date 2020-05-28 21:33:05
  */
 @RestController
 @RequestMapping("product/categorybrandrelation")
@@ -46,7 +47,7 @@ public class CategoryBrandRelationController {
      * 信息
      */
     @RequestMapping("/info/{id}")
-    //@RequiresPermissions("product:categorybrandrelation:info")
+  //  @RequiresPermissions("product:categorybrandrelation:info")
     public R info(@PathVariable("id") Long id){
 		CategoryBrandRelationEntity categoryBrandRelation = categoryBrandRelationService.getById(id);
 
@@ -79,7 +80,7 @@ public class CategoryBrandRelationController {
      * 删除
      */
     @RequestMapping("/delete")
-   // @RequiresPermissions("product:categorybrandrelation:delete")
+  //  @RequiresPermissions("product:categorybrandrelation:delete")
     public R delete(@RequestBody Long[] ids){
 		categoryBrandRelationService.removeByIds(Arrays.asList(ids));
 
