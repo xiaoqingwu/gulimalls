@@ -1,0 +1,16 @@
+spring:
+  cloud:
+    gateway:
+      routes:
+#        - id: product-routes
+#         uri: lb://gulimall-product
+#         predicates:
+#            - path=/api/product/**
+#         filters:
+#           - RewritePath=/api/(?<segment>.*),/$\{segment}
+        - id: admin_route
+          uri: lb://renren-fast
+          predicates:
+            - Path=/api/**
+          filters:
+            - RewritePath=/api/(?<segment>.*),/renren-fast/$\{segment}
