@@ -68,14 +68,33 @@ public class BrandController {
         return R.ok();
     }
 
-    /**
+   /* *//**
      * 修改
-     */
+     *//*
     @RequestMapping("/update")
     //@RequiresPermissions("product:brand:update")
     public R update(@Validated(UpdateGroup.class) @RequestBody BrandEntity brand){
         brandService.updateDetail(brand);
 
+        return R.ok();
+    }
+    /**
+     * 修改状态
+     */
+  /*  @RequestMapping("/update/status")
+    //@RequiresPermissions("product:brand:update")
+    public R updateStatus(@Validated(UpdateStatusGroup.class) @RequestBody BrandEntity brand){
+        brandService.updateById(brand);
+
+        return R.ok();
+    }*/
+    /**
+     * 修改状态
+     */
+    @RequestMapping("/update")
+    //@RequiresPermissions("product:brand:update")
+    public R update(@Validated(UpdateGroup.class) @RequestBody BrandEntity brand){
+        brandService.updateDetail(brand);
         return R.ok();
     }
     /**
@@ -88,7 +107,6 @@ public class BrandController {
 
         return R.ok();
     }
-
     /**
      * 删除
      */

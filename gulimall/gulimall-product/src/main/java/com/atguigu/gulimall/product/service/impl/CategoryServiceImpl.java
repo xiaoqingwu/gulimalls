@@ -15,6 +15,7 @@ import com.atguigu.common.utils.*;
 import com.atguigu.gulimall.product.dao.CategoryDao;
 import com.atguigu.gulimall.product.entity.CategoryEntity;
 import com.atguigu.gulimall.product.service.CategoryService;
+import org.springframework.transaction.annotation.Transactional;
 
 
 @Service("categoryService")
@@ -64,4 +65,16 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryDao, CategoryEntity
         //逻辑删除
         baseMapper.deleteBatchIds(asList);
     }
+
+    /**
+     * 级联更新所有关联的数据
+     * @param category
+     */
+   // @Transactional
+    @Override
+    public void updateCascade(CategoryEntity category) {
+        this.updateById(category);
+      //  categoryBrandRelationService.updateCategory(category.getCatId(),category.getName());
+    }
+
 }
