@@ -26,7 +26,7 @@ import com.atguigu.common.utils.R;
  * @date 2020-05-24 15:30:48
  */
 @RestController
-@RequestMapping("member/umsmembercollectsubject")
+@RequestMapping("member/membercollectsubject")
 public class UmsMemberCollectSubjectController {
     @Autowired
     private UmsMemberCollectSubjectService umsMemberCollectSubjectService;
