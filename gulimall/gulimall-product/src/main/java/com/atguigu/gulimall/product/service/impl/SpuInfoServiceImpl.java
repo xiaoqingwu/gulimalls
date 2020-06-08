@@ -22,6 +22,7 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.atguigu.common.utils.*;
 
 import com.atguigu.gulimall.product.dao.SpuInfoDao;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 
 
@@ -60,6 +61,7 @@ public class SpuInfoServiceImpl extends ServiceImpl<SpuInfoDao, SpuInfoEntity> i
         return new PageUtils(page);
     }
 
+    @Transactional
     @Override
     public void saveSpuInfo(SpuSaveVo vo) {
         //1、保存spu基本信息 pms_spu_info
