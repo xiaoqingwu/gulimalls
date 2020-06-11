@@ -82,7 +82,7 @@ public class AttrServiceImpl extends ServiceImpl<AttrDao, AttrEntity> implements
             attrEntityQueryWrapper.eq("catelog_id",catelogId);
         }
             String key = (String)params.get("key");
-            if (StringUtils.isEmpty(key)){
+            if (!StringUtils.isEmpty(key)){
                 attrEntityQueryWrapper.and((attr)->{
                     attr.eq("attr_id",key).or().like("attr_name",key);
                 });
