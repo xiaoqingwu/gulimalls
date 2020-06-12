@@ -26,7 +26,7 @@ import com.atguigu.common.utils.R;
  * @date 2020-05-24 15:24:22
  */
 @RestController
-@RequestMapping("ware/wmswareinfo")
+@RequestMapping("ware/wareinfo")
 public class WmsWareInfoController {
     @Autowired
     private WmsWareInfoService wmsWareInfoService;
@@ -51,7 +51,7 @@ public class WmsWareInfoController {
     public R info(@PathVariable("id") Long id){
 		WmsWareInfoEntity wmsWareInfo = wmsWareInfoService.getById(id);
 
-        return R.ok().put("wmsWareInfo", wmsWareInfo);
+        return R.ok().put("wareInfo", wmsWareInfo);
     }
 
     /**

@@ -26,7 +26,7 @@ import com.atguigu.common.utils.R;
  * @date 2020-05-24 15:24:22
  */
 @RestController
-@RequestMapping("ware/wmspurchasedetail")
+@RequestMapping("ware/purchasedetail")
 public class WmsPurchaseDetailController {
     @Autowired
     private WmsPurchaseDetailService wmsPurchaseDetailService;
@@ -51,7 +51,7 @@ public class WmsPurchaseDetailController {
     public R info(@PathVariable("id") Long id){
 		WmsPurchaseDetailEntity wmsPurchaseDetail = wmsPurchaseDetailService.getById(id);
 
-        return R.ok().put("wmsPurchaseDetail", wmsPurchaseDetail);
+        return R.ok().put("purchaseDetail", wmsPurchaseDetail);
     }
 
     /**

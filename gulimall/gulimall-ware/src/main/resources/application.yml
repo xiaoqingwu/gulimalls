@@ -1,9 +1,17 @@
 spring:
   datasource:
     username: root
-    data-password: root
-    url: jdbc:mysql://120.53.2.17:3306/gulimall_wms
+    password: 123456
+    url: jdbc:mysql://120.53.2.17:3306/gulimall_wms?useUnicode=true&autoReconnect=true&characterEncoding=utf8
     driver-class-name: com.mysql.jdbc.Driver
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 120.53.2.17:8848
+  application:
+    name: gulimall-ware
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
 mybatis-plus:
   mapper-locations: classpath*:/mapper/**/*.xml
   global-config:
@@ -11,3 +19,6 @@ mybatis-plus:
       id-type: auto
 server:
   port: 20000
+logging:
+  level:
+    com.atguigu: debug
