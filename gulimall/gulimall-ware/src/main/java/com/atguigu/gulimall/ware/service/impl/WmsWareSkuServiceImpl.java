@@ -1,11 +1,14 @@
 package com.atguigu.gulimall.ware.service.impl;
 
+import com.atguigu.common.to.SkuHasStockVO;
 import com.atguigu.gulimall.ware.feign.ProductFeignService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
+
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -24,6 +27,20 @@ public class WmsWareSkuServiceImpl extends ServiceImpl<WmsWareSkuDao, WmsWareSku
 
     @Autowired
     ProductFeignService productFeignService;
+
+    @Override
+    public List<SkuHasStockVO> getSkuHasStock(List<Long> skuIds) {
+        List<SkuHasStockVO> collect = skuIds.stream().map(skuId -> {
+            SkuHasStockVO vo = new SkuHasStockVO();
+            // 查询当前 sku 的库存
+            Long count = baseMapper.getSkuStock(skuId);
+            vo.setSkuId(skuId);
+            vo.setHasStock(count != null && count > 0);
+            return vo;
+        }).collect(Collectors.toList());
+        return collect;
+    }
+
     @Override
     public PageUtils queryPage(Map<String, Object> params) {
         IPage<WmsWareSkuEntity> page = this.page(
