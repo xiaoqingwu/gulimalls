@@ -5,6 +5,7 @@ import com.atguigu.common.utils.PageUtils;
 import com.atguigu.common.utils.R;
 import com.atguigu.gulimall.product.entity.SkuInfoEntity;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -19,5 +20,7 @@ public interface SkuInfoService extends IService<SkuInfoEntity> {
     PageUtils queryPage(Map<String, Object> params);
 
     void saveSkuInfo(SkuInfoEntity skuInfoEntity);
+
+    List<SkuInfoEntity> getSkusBySpuId(Long spuId);
 }
 
