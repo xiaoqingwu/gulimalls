@@ -8,6 +8,7 @@ import com.atguigu.common.to.SpuBoundTo;
 import com.atguigu.common.to.es.ESSkuModel;
 import com.atguigu.gulimall.product.entity.*;
 import com.atguigu.gulimall.product.feign.CouponFeignService;
+import com.atguigu.gulimall.product.feign.SearchFeignService;
 import com.atguigu.gulimall.product.feign.WareFeignService;
 import com.atguigu.gulimall.product.service.*;
 import com.atguigu.gulimall.product.vo.*;
@@ -63,6 +64,9 @@ public class SpuInfoServiceImpl extends ServiceImpl<SpuInfoDao, SpuInfoEntity> i
 
     @Autowired
     CategoryService categoryService;
+
+    @Autowired
+    SearchFeignService searchFeignService;
 
     @Resource
     private WareFeignService wareFeignService;
@@ -281,7 +285,7 @@ public class SpuInfoServiceImpl extends ServiceImpl<SpuInfoDao, SpuInfoEntity> i
          *      RequestTemplate
          * 2. 发送请求进行之星(执行成功会解码相应数据)
          *     executeAndDecode(template)
-         * 3. 执行请求会有重试机制
+         * 3. 执行请求会有重试机制默认是5次
          */
         R r = searchFeignService.productStatusUp(upProducts);
         if (r.getCode() == 0) {
