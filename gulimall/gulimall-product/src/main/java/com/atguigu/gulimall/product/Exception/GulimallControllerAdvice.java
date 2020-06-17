@@ -27,11 +27,11 @@ public class GulimallControllerAdvice {
         bindingResult.getFieldErrors().forEach((fieldError) ->{
             map.put(fieldError.getField(),fieldError.getDefaultMessage());
         } );
-        return R.error(BizCodeEnume.VAILD_EXCEPTION.getCode(),BizCodeEnume.VAILD_EXCEPTION.getMsg()).put("data",map);
+        return R.error(BizCodeEnume.VALID_EXCEPTION.getCode(),BizCodeEnume.VALID_EXCEPTION.getMsg()).put("data",map);
     }
     @ExceptionHandler(value = Throwable.class)
     public R handleException(Throwable throwable){
         log.error("错误异常");
-        return R.error(BizCodeEnume.UNKNOW_EXCEPTION.getCode(),BizCodeEnume.UNKNOW_EXCEPTION.getMsg());
+        return R.error(BizCodeEnume.UNKNOWN_EXCEPTION.getCode(),BizCodeEnume.UNKNOWN_EXCEPTION.getMsg());
     }
 }

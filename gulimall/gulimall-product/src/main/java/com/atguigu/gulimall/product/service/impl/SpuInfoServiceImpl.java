@@ -126,7 +126,8 @@ public class SpuInfoServiceImpl extends ServiceImpl<SpuInfoDao, SpuInfoEntity> i
         imagesService.saveImages(spuInfoEntity.getId(),images);
         //4、保存spu的规格参数;pms_product_attr_value
         List<BaseAttrs> baseAttrs = vo.getBaseAttrs();
-        List<Object> collect = baseAttrs.stream().map(base -> {
+
+        List<ProductAttrValueEntity> collect = baseAttrs.stream().map(base -> {
             ProductAttrValueEntity valueEntity = new ProductAttrValueEntity();
             valueEntity.setAttrId(base.getAttrId());
             AttrEntity byId = attrService.getById(base.getAttrId());
@@ -136,6 +137,8 @@ public class SpuInfoServiceImpl extends ServiceImpl<SpuInfoDao, SpuInfoEntity> i
             valueEntity.setSpuId(spuInfoEntity.getId());
             return valueEntity;
         }).collect(Collectors.toList());
+        attrValueService.saveProductAttr(collect);
+
         //5、保存spu的积分信息；gulimall_sms->sms_spu_bounds
         Bounds bounds = vo.getBounds();
         SpuBoundTo spuBoundTo = new SpuBoundTo();
@@ -159,8 +162,8 @@ public class SpuInfoServiceImpl extends ServiceImpl<SpuInfoDao, SpuInfoEntity> i
                 }
                 SkuInfoEntity skuInfoEntity = new SkuInfoEntity();
                 BeanUtils.copyProperties(item,skuInfoEntity);
-                skuInfoEntity.setBrandId(skuInfoEntity.getBrandId());
-                skuInfoEntity.setCatalogId(skuInfoEntity.getCatalogId());
+                skuInfoEntity.setBrandId(spuInfoEntity.getBrandId());
+                skuInfoEntity.setCatalogId(spuInfoEntity.getCatalogId());
                 skuInfoEntity.setSaleCount(0L);
                 skuInfoEntity.setSpuId(spuInfoEntity.getId());
                 skuInfoEntity.setSkuDefaultImg(defaultImg);

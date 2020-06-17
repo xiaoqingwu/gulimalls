@@ -1,8 +1,8 @@
 spring:
   datasource:
-    username: root
-    password: 123456
-    url: jdbc:mysql://120.53.2.17:3306/gulimall_wms?useUnicode=true&autoReconnect=true&characterEncoding=utf8
+    username: wxq
+    password: WUxiaoqing_123
+    url: jdbc:mysql://rm-wz9jsv8yw8c53k1927o.mysql.rds.aliyuncs.com:3306/gulimall_wms?useUnicode=true&autoReconnect=true&characterEncoding=utf8
     driver-class-name: com.mysql.jdbc.Driver
   cloud:
     nacos:
