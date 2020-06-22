@@ -47,3 +47,8 @@ spring:
             - Path=/api/**
           filters:
             - RewritePath=/api/(?<segment>.*),/renren-fast/$\{segment}
+      ## 配置商城首页的路由规则
+        - id: gulimall_host_router
+          uri: lb://gulimall-product # lb表示负载均衡
+          predicates:
+          - Host=**.gulimall.com,gulimall.com #将所有 gulimall.com及其子域名下的请求，转到 gulimall-product 服务
