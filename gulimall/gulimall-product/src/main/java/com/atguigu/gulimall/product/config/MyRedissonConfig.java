@@ -18,7 +18,7 @@ public class MyRedissonConfig {
         // 默认连接地址 127.0.0.1:6379
         // RedissonClient redisson = Redisson.create();
         Config config = new Config();
-        config.useSingleServer().setAddress("redis://127.0.0.1:6379");
+        config.useSingleServer().setAddress("redis://120.53.2.17:6379");
         RedissonClient redissonClient = Redisson.create(config);
         return  redissonClient;
     }
